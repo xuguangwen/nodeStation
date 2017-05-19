@@ -46,6 +46,6 @@ this is bootstrap+vue+node+express+mysql porject
 
 ![image](https://github.com/k2-xu/vue-node-mysql/blob/master/readme/news2.png)
 
-
+详情请咨询QQ：326531916  微信：xu326531916
 
 
