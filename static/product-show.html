@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>产品展示</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  
+  <link rel="alternate icon" type="img/HENGWANG.png" href="img/HENGWANG.png">
+  <link rel="stylesheet" href="css/amazeui.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style type="text/css">
+  [v-cloak]{
+    display: none;
+  }
+  </style>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="js/vue-ajax.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+            vueAjax("/get_navs","#navs");
+            vueAjax("/get_banners","#banner");
+            vueAjax("/get_products","#products");
+            vueAjax("/get_contact","#contact");
+            vueAjax("/get_navs","#footer");
+        })
+</script>
+</head>
+<body>
+
+<header class="am-topbar header">
+  <div class="am-container-1">
+    <div class="left hw-logo">
+      <img class=" logo" src="img/HENGWANG.png"></img>
+      <img class="word" src="img/hw-word.png"></img>
+    </div>
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span>
+  </button>
+<div class="am-collapse am-topbar-collapse right" id="doc-topbar-collapse">
+  <div class=" am-topbar-left am-form-inline am-topbar-right" role="search" id="navs">
+    <ul class="am-nav am-nav-pills am-topbar-nav hw-menu">
+      <li v-for="(item,index) in msg"><a v-bind:href="item.href">{{item.name}}</a></li>
+    </ul>
+  </div>
+  </div>
+  </div>
+</header>
+
+<div class="toppic">
+	 <div class="am-container-1">
+	 <div class="toppic-title left">
+			<i class="am-icon-dropbox toppic-title-i"></i>
+			<span class="toppic-title-span">产品展示</span>
+			<p>Product Show</p>
+		</div>
+		<div class="right toppic-progress">
+			<span><a href="index.html" class="w-white">首页</a></span>
+			<i class=" am-icon-arrow-circle-right w-white"></i>
+			<span><a href="product-show.html" class="w-white">产品展示</a></span>
+		</div>
+	</div>
+</div>
+
+<div id="products">
+	<ul class=" product-show-ul">
+	    <li v-cloak v-for="(products,index) in msg">
+	    	<div class="product-content">
+			    	<div class="left am-u-sm-12 am-u-md-6 am-u-lg-6 product-content-left">
+			    		<div class="product-show-title">
+			    			<h3>{{products.title}}</h3>
+			    			<span>{{products.post_time}}</span>
+			    		</div>
+			    	
+			    	<div class="product-show-content">
+			    		<div class="product-add">
+			    			<span>查看地址：</span>
+			    			<div><a href="#">{{products.href}}</a></div>
+			    			<i class="am-icon-dribbble"></i>
+			    		</div>
+			    		<div class="product-intro">
+			    			<span>详情介绍：</span>
+			    			<div><p>{{products.description}}</p></div>
+			    		  <i class="am-icon-tasks"></i>
+			    		</div>
+			    	</div>
+			    	</div>
+			    	<div class="right am-u-sm-12 am-u-md-6 am-u-lg-6 product-content-right">
+			    		<img class="product-img" :src="'upload/'+products.src"/> 
+			    	</div>	
+			    	<div class="clear"></div>
+	    	</div>
+	    </li>	
+	</ul>
+</div>
+
+  
+   
+
+<footer class="footer ">
+<ul>     
+ <div id="contact">
+        <li v-cloak v-for="(contact,index) in msg" class="am-u-lg-4 am-u-md-4 am-u-sm-12 part-5-li2" >
+            <div class="part-5-title">公司名称：{{contact.company_name}}</div>
+            <div class="part-5-words2">
+                <span>地址:{{contact.address}}</span>
+                <span>电话:{{contact.tel}}</span>
+                <span>QQ号:{{contact.qq}}</span>
+                <span>邮箱:{{contact.email}}</span>
+                <span><i class="am-icon-phone"></i><em >{{contact.tel}}</em></span>
+            </div>
+        </li>
+  </div> 
+        <li class="am-u-lg-4 am-u-md-4 am-u-sm-12 ">
+            <div class="part-5-title">相关链接</div>
+            <div class="part-5-words2" id="footer">
+                <ul class="part-5-words2-ul">
+                    <li v-for="(item,index) in msg" class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a v-bind:href="item.href"> {{item.name}} </a></li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </li>
+        <div class="clear"></div>
+    </ul> 
+</footer>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/amazeui.min.js"></script>
+
+</html>

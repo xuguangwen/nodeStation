@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/files/admin/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/files/admin/css/houtai.css"/>
+  <style media="screen">
+  /*修改弹窗样式*/
+  a,a:hover{ text-decoration:none; color:#333}
+  .shadow {position:fixed; width:100%; height:100%; background:#000; opacity:0.3; filter:alpha(opacity:30);left:0; top: 0;}
+  .modal-dialog{position:fixed; left:40%; top:0;z-index: 999;}
+  .toppic {
+    width: 100%;
+    height: 130px;
+    color: #fff;
+    font-size: 26px;
+    font-family: "Microsoft YaHei";
+    background: url(/files/admin/images/contact.jpg) no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: 50px;
+}
+  </style>
+  <title>产品案例</title>
+  </head>
+  <body>
+    <% include components/top.inc.ejs %>
+    <!-- 主体展示页 -->
+      <div class="container">
+        <div class="toppic"></div>
+        <div>
+          <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;编 辑</a>
+        </div>
+        <!-- 1.添加模态框 -->
+        <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">联系我们——Contact US</h4>
+          </div>
+          <div class="modal-body">
+            <form action="?" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">公司名称:</label>
+                <input type="text" class="form-control" name="company_name" placeholder="请输入公司名称">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">联系人:</label>
+                <input type="text" class="form-control" name="person" placeholder="请输入公司联系人姓名">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">地址:</label>
+                <input type="text" class="form-control" name="address" placeholder="请输入公司地址">
+              </div>
+              <div class="form-group">
+                <label for="text" class="control-label">固定电话:</label>
+                <input type="number" class="form-control" name="phone" placeholder="请输入公司固定座机">
+              </div>
+              <div class="form-group">
+                <label for="text" class="control-label">手机:</label>
+                <input type="number" class="form-control" name="tel" placeholder="请您输入公司电话">
+              </div>
+              <div class="form-group">
+                <label for="text" class="control-label">QQ:</label>
+                <input type="number" class="form-control" name="qq" placeholder="请输入您公司的企业qq">
+              </div>
+              <div class="form-group">
+                <label for="text" class="control-label">邮箱:</label>
+                <input type="email" class="form-control" name="email" placeholder="请输入Email">
+              </div>
+              <input type="submit" class="btn btn-success" value="添加">
+              <button type="button" class="btn btn-warning " data-dismiss="modal">取消</button>
+              
+            </form>
+          </div>
+        </div>
+        </div>
+        </div>
+        <script >
+        $('#add').modal(options)
+        })
+        </script>
+        <h3>联系我们——Contact US</h3>
+        <% for(var i=0;i<contacts.length;i++){%>
+        <div class="contact">
+          <p>公司名称:<%=contacts[i].company_name%></p>
+          <p>地址：<%=contacts[i].person%></p>
+          <p>地址：<%=contacts[i].address%></p>
+          <p><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;&nbsp;:  <%=contacts[i].phone%></p>
+          <p><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;:  <%=contacts[i].tel%></p>
+          <p>QQ：<%=contacts[i].qq%></p>
+          <p>邮箱：<%=contacts[i].email%></p>
+          <div class="class="btn-group"">
+          <button class="btn  btn-danger "><a href="?act=del&id=<%=contacts[i].ID%>" onclick="return confirm('你真的要删吗？')">删除再编辑</a></button>
+          </div>
+        </div>
+        <%}%>
+
+<!-- 修改框 -->
+  <% if(typeof mod_data!='undefined'){ %>
+        <div class="shadow"></div>
+        <div class="modal-dialog" style="background-color: #e5eecc; padding:10px 8px 20px 8px;">
+            <form action="?" method="post">
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">公司名称:</label>
+                <input type="text" class="form-control" name="company_name"  value="<%= mod_data.address %>">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">联系人:</label>
+                <input type="text" class="form-control" name="person"  value="<%= mod_data.person %>">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">地址:</label>
+                <input type="text" class="form-control" name="address"  value="<%= mod_data.address %>">
+              </div>
+              <div class="form-group">
+                <label for="text" class="control-label">固定电话:</label>
+                <input type="number" class="form-control" name="phone"  value="<%= mod_data.phone %>">
+              </div>
+              <div class="form-group">
+                <label for="text" class="control-label">手机:</label>
+                <input type="number" class="form-control" name="tel"  value="<%= mod_data.tel %>">
+              </div>
+              <div class="form-group">
+                <label for="text" class="control-label">QQ:</label>
+                <input type="number" class="form-control" name="qq"  value="<%= mod_data.qq %>">
+              </div>
+              <div class="form-group">
+                <label for="text" class="control-label">邮箱:</label>
+                <input type="email" class="form-control" name="email" value="<%= mod_data.email %>">
+              </div>
+              <a type="button" class="btn btn-info" href="/admin/contact">取消</a>
+              <input type="submit" class="btn btn-danger" value="修改">
+            </form>
+        </div>
+    <% } %>
+  </div>
+
+
+
+    <% include components/bottom.ejs %>
+  </body>
+  <script src="/files/admin/js/jquery.min.js"></script>
+  <script src="/files/admin/js/bootstrap.min.js"></script>
+  </html>

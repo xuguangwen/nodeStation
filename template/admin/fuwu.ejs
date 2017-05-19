@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/files/admin/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/files/admin/css/houtai.css"/>
+    <title>服务中心</title>
+<style media="screen">
+  .toppic {
+    width: 100%;
+    height: 130px;
+    color: #fff;
+    font-size: 26px;
+    font-family: "Microsoft YaHei";
+    background: url(/files/admin/images/bg-pic3.png) no-repeat;
+    background-size: 100% 100%;
+}
+.toptitle{
+  margin-top:25px;
+}
+.toptitle p{
+  margin: 0;
+  padding-left: 20px;
+}
+.topbtn{
+  line-height: 130px;
+}
+  /*修改弹窗样式*/
+  a,a:hover{ text-decoration:none; color:#333}
+  .shadow {position:fixed; width:100%; height:100%; background:#000; opacity:0.3; filter:alpha(opacity:30);left:0; top: 0;}
+  .modal-dialog{position:fixed; left:40%; top:0; z-index: 999;}
+</style>
+</head>
+<body>
+<div class="page">
+    <% include components/top.inc.ejs %>
+      <div class="toppic">
+        <div class="container">
+          <div class="row">
+          <div class="col-md-6 ">
+            <div class="toptitle">
+              <div><span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;服务中心</div>
+              <p style="font-size: 17px;">SEVER CONTER</p>
+            </div> 
+          </div>
+          <div class="col-md-6 topbtn">
+            <div class="nav navbar-right">
+              <a href="#" class="btn btn-success btn-lg" data-toggle="modal" data-target="#add"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;添  加</a>
+            </div>
+            
+          </div>
+          </div>
+          
+        </div> 
+      </div>
+
+      <!-- 信息展示页 -->
+      <div class="container" style="position:relative">
+        <% for(var i=0;i<evaluations.length;i++){ %>
+        <div class="row">
+          <div class="col-md-5">
+              <h2><%=evaluations[i].name%></h2>
+              <p><%=evaluations[i].content%></p>
+          </div>
+          <div class="col-md-7">
+              <img src="/upload/<%=evaluations[i].src%>" class="img-responsive" alt=""/>
+          </div>
+        </div>
+      <div class="row">
+        <div class="navbar navbar-right">
+        <a href="?act=mod&id=<%=evaluations[i].ID%>" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;修 改</a>
+        <a href="?act=del&id=<%=evaluations[i].ID%>" onclick="return confirm('你真的要删吗？')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;删 除</a>
+        </div>
+      </div>
+      <hr>
+        <% } %>
+      </div>
+</div>
+  
+ <!-- 2.修改不能使用模态框 -->
+<% if(typeof mod_data!='undefined'){ %>
+    <div class="shadow"></div>
+    <div class="modal-dialog" style="background-color: #e5eecc; padding:10px 8px 20px 8px;">
+        <form action="?" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="mod_id" value="<%= mod_data.ID %>" />
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">标题:</label>
+            <input type="text" class="form-control" name="name" value="<%= mod_data.name %>">
+          </div>
+          <div class="form-group">
+            <label for="text" class="control-label">简介:</label>
+            <textarea class="form-control" name="content" rows="6"><%= mod_data.content %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" name="f1">
+          </div>
+          <a type="button" class="btn btn-info" href="/admin/fuwu">取消</a>
+          <input type="submit" class="btn btn-danger" value="修改">
+        </form>
+    </div>
+    <% } %>
+
+<!-- 1.添加模态框 -->
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">我们在路上——About Us</h4>
+      </div>
+      <div class="modal-body">
+        <form action="?" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">标题:</label>
+            <input type="text" class="form-control" name="name">
+          </div>
+          <div class="form-group">
+            <label for="text" class="control-label">简介:</label>
+            <textarea class="form-control" name="content" rows="6"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" name="f1">
+            <p class="help-block">上传代表性图片！</p>
+          </div>
+          <button type="button" class="btn btn-warning " data-dismiss="modal">取消</button>
+          <input type="submit" class="btn btn-success" value="添加">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script >
+  $('#add').modal(options)
+})
+</script>
+</div>
+<% include components/bottom.ejs %>
+</body>
+<script src="/files/admin/js/jquery.min.js"></script>
+<script src="/files/admin/js/bootstrap.min.js"></script>
+</html>

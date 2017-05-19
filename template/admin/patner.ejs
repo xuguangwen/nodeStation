@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/files/admin/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/files/admin/css/houtai.css"/>
+    <title>合作伙伴管理</title>
+  <style media="screen">
+  /*修改弹窗样式*/
+    a,a:hover{ text-decoration:none; color:#333}
+  .shadow {position:fixed; width:100%; height:100%; background:#000; opacity:0.3; filter:alpha(opacity:30);left:0; top: 0;}
+  .modal-dialog{position:fixed; left:40%; top:0; z-index: 999;}
+  </style>
+  </head>
+  <body>
+  <div class="page">
+    <% include components/top.inc.ejs %>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-2">
+        <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#add"><span class="glyphicon glyphicon-plus"></span>添加</a>
+        </div>
+        <div class="col-md-10">
+            <div class="page-header">
+                <h1>合作伙伴管理</h1>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>企业名称</th>
+                        <th>企业简介</th>
+                        <th>企业logo</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <% for(var i=0;i<patners.length;i++){ %>
+                    <tr>
+                      <th scope="row"><%=patners[i].ID%></th>
+                      <td><%=patners[i].name%></td>
+                      <td><%=patners[i].description%></td>
+                      <td><img width="32" height="32" src="/upload/<%=patners[i].src%>"/></td>
+                      <td>
+                          <div role="presentation" class="dropdown">
+                              <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                  操作<span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                 <li ><a href="?act=mod&id=<%=patners[i].ID%>">修改</a></li>
+                                 <li><a href="?act=del&id=<%=patners[i].ID%>" onclick="return confirm('你真的要删吗？')">删除</a></li>
+                              </ul>
+                          </div>
+                      </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+             <!-- 2.修改模态框 -->
+            <% if(typeof mod_data!='undefined'){ %>
+                <div class="shadow"></div>
+                <div class="modal-dialog" style="background-color: #e5eecc; padding:10px 8px 20px 8px;">
+                    <form action="?" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="mod_id" value="<%= mod_data.ID %>" />
+                      <div class="form-group">
+                        <label for="recipient-name" class="control-label">企业名称:</label>
+                        <input type="text" class="form-control" name="name" value="<%= mod_data.name %>">
+                      </div>
+                      <div class="form-group">
+                        <label for="text" class="control-label">企业简介:</label>
+                        <textarea class="form-control" name="description" rows="6"><%= mod_data.description %></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" name="f1">
+                      </div>
+                      <a type="button" class="btn btn-info" href="/admin/patners">取消</a>
+                      <input type="submit" class="btn btn-danger" value="修改">
+                    </form>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</div>
+<!-- 1.添加模态框 -->
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">添加模态框</h4>
+      </div>
+      <div class="modal-body">
+        <form action="?" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">企业名称:</label>
+            <input type="text" class="form-control" name="name">
+          </div>
+          <div class="form-group">
+            <label for="text" class="control-label">企业简介:</label>
+            <textarea class="form-control" name="description" rows="6"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" name="f1">
+            <p class="help-block">上传企业logo！</p>
+          </div>
+          <button type="button" class="btn btn-warning " data-dismiss="modal">取消</button>
+          <input type="submit" class="btn btn-success" value="添加">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script >
+  $('#add').modal(options)
+})
+</script>
+</div>
+<% include components/bottom.ejs %>
+</body>
+<script src="/files/admin/js/jquery.min.js"></script>
+<script src="/files/admin/js/bootstrap.min.js"></script>
+</html>

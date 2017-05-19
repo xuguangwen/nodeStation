@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/files/admin/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/files/admin/css/houtai.css"/>
+  <style media="screen">
+  /*修改弹窗样式*/
+  a,a:hover{ text-decoration:none; color:#333}
+  .shadow {position:fixed; width:100%; height:100%; background:#000; opacity:0.3; filter:alpha(opacity:30);left:0; top: 0;}
+  .modal-dialog{position:fixed; left:40%; top:0;z-index: 999;}
+  </style>
+  <title>焦点图</title>
+  </head>
+  <body>
+    <div class="page">
+      <% include components/top.inc.ejs %>
+      <div class="container">
+      <div class="content-wrap">
+      <h4 style="color:#0aa770"><span class="glyphicon glyphicon-film"></span>&nbsp;&nbsp;焦点图管理</h4>
+      <div class="navbar navbar-right"><h5 style="text-indent: 1em; color:#f50"><span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;请注意这里的焦点图别出心裁哦！</h5></div>
+        <div>
+        <form action="?" method="post">
+        <div class="form-group">
+          <label for="exampleInputEmail1">标题</label>
+          <input type="text" class="form-control" name="title" placeholder="不超过20字">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputDescription">描述</label>
+          <textarea class="form-control"  name="description" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputHerf">链接</label>
+          <input type="text" class="form-control" name="href" placeholder="这里是链接">
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Check me out
+          </label>
+        </div>
+        <button type="submit" class="btn btn-success">添加</button>
+      </form>
+        </div>
+<table class="table table-striped">
+  <caption style="color:#b8a05c"><h4>焦点图信息记录表</h4></caption>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>标题</th>
+      <th>描述</th>
+      <th>链接</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(var i=0;i<banners.length;i++){ %>
+    <tr>
+      <td><%=banners[i].ID%></td>
+      <td><%=banners[i].title%></td>
+      <td><%=banners[i].description%></td>
+      <td><%=banners[i].href%></td>
+      <td>
+        <button class="btn btn-sm btn-danger"><a href="?act=del&id=<%=banners[i].ID%>" onclick="return confirm('你真的要删吗？')">删除</a></button>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+
+                <% if(typeof mod_data!='undefined'){ %>
+                <div class="shadow"></div>
+                <div class="modal-dialog" style="background-color: #e5eecc; padding:10px 8px 20px 8px;">
+                    <form action="?" method="post">
+                      <div class="form-group">
+                        <label for="recipient-name" class="control-label">标题:</label>
+                        <input type="text" class="form-control" name="title" value="<%= mod_data.title %>">
+                      </div>
+                      <div class="form-group">
+                        <label for="text" class="control-label">描述:</label>
+                        <textarea class="form-control" name="description" rows="6"><%= mod_data.description %></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="text" class="control-label">链接:</label>
+                        <input type="text" name="href" class="form-control" value="<%= mod_data.href %>" />
+                      </div>
+                      <input type="submit" class="btn btn-danger" value="修改">
+                      <a type="button" class="btn btn-info" href="/admin/banners">取消</a>
+                    </form>
+                </div>
+                <% } %>
+      </div>
+    </div>
+    </div>
+<% include components/bottom.ejs %>
+</body>
+<script src="/files/admin/js/jquery.min.js"></script>
+<script src="/files/admin/js/bootstrap.min.js"></script>
+</html>

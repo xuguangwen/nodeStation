@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
+    <title>后台管理系统主页</title>
+    <link rel="stylesheet" href="/files/admin/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/files/admin/css/houtai.css"/>
+</head>
+<body>
+<% include components/top.inc.ejs %>
+<!--警告框-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4>欢迎登录后台管理系统</h4>
+                <p>后台管理系统使用EJS模板搭建,整个系统开发采用了前后端分离，具有高可扩展性</p>
+                <p>
+                    <button type="button" class="btn btn-default"  data-dismiss="alert"  >开始使用吧</button>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">网站数据统计</div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>统计项目</th>
+                                <th>今日</th>
+                                <th>昨日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                 <th scope="row">注册会员</th>
+                                 <td>200</td>
+                                 <td>400</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">登录会员</th>
+                                <td>4100</td>
+                                <td>5112</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">今日新闻</th>
+                                <td>1540</td>
+                                <td>4511</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">被点次数</th>
+                                <td>150</td>
+                                <td>110</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">热门新闻EASC根据点击次数来排</div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="index.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;这里是新闻的摘要<small class="pull-right">2017/02/08</small></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="index.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;这里是新闻的摘要<small class="pull-right">2017/02/08</small></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="index.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;这里是新闻的摘要<small class="pull-right">2017/02/08</small></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="index.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;这里是新闻的摘要<small class="pull-right">2017/02/08</small></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="index.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;这里是新闻的摘要<small class="pull-right">2017/02/08</small></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="index.html"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;这里是新闻的摘要<small class="pull-right">2017/02/08</small></a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">今日访客统计canvas来绘制曲线。也可以调用Echar插件</div>
+                <div class="panel-body">
+                    <canvas id="canvas" class="col-md-12"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            
+        </div>
+        
+    </div>
+</div>
+<!--footer-->
+<% include components/bottom.ejs %>
+<!--footer-->
+<script src="/files/admin/js/jquery.min.js"></script>
+<script src="/files/admin/js/bootstrap.min.js"></script>
+<!-- canvas画图js -->
+<script src="/files/admin/js/Chart.js"></script>
+<script src="/files/admin/js/script.js"></script>
+</body>
+</html>

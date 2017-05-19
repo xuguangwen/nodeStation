@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>首页</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="alternate icon" type="img/hengwang-1.png" href="img/hengwang-1.png">
+  <link rel="stylesheet" href="css/amazeui.css"/>
+  <link rel="stylesheet" href="css/style.css"/> 
+  <script src="js/jquery.min.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="js/vue-ajax.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+            vueAjax("/get_navs","#navs");
+            vueAjax("/get_banners","#banner");
+            vueAjax("/get_products","#products");
+            vueAjax("/get_hotNews","#hotNews");
+            vueAjax("/get_patners","#patners");
+            vueAjax("/get_contact","#contact");
+            vueAjax("/get_navs","#footer");
+        })
+</script>
+  <style type="text/css">
+  /*解决vue页面数据加载时出现{{message}}闪烁现象*/
+  [v-cloak]{
+    display: none;
+  }
+ .pic{
+  width: 100%;
+  height: 230px;
+  margin-top: 100px;
+  background: url(img/banner1.jpg) center no-repeat;
+ }
+  </style>
+</head>
+<body>
+<header class="am-topbar header">
+	<div class="am-container-1">
+		<div class="left hw-logo">
+		  <img class=" logo" src="img/HENGWANG.png"></img>
+		  <img class="word" src="img/hw-word.png"></img>
+    </div>
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span>
+  </button>
+<div class="am-collapse am-topbar-collapse right" id="doc-topbar-collapse">
+  <div class=" am-topbar-left am-form-inline am-topbar-right" role="search" id="navs">
+    <ul class="am-nav am-nav-pills am-topbar-nav hw-menu">
+      <li v-cloak v-for="(item,index) in msg"><a v-bind:href="item.href">{{item.name}}</a></li>
+    </ul>
+  </div>
+  </div>
+  </div>
+</header>
+<!-- 焦点图 -->
+<div class="pic" id="banner">
+  <div v-cloak v-for="banner in msg" style="text-align: center;">
+        <h1 style="padding-top: 30px;">{{banner.title}}</h1>
+        <p style="margin:15px 10px 40px 10px; ">{{banner.description}}</p>
+        <a class="am-btn am-btn-success am-btn-xl am-radius" v-bind:href="banner.href">点开查看</a>
+  </div>
+</div>
+<div class="gray-li">
+	<div class="customer-case part-all ">
+		<div class="part-title">
+			<a href="customer-case.html">
+			<i class=" am-icon-briefcase part-title-i"></i>
+			<span class="part-title-span">客户案例</span>
+			</a>
+		</div>
+<!-- 客户案例展示 -->
+  <div id="products">
+		<ul data-am-widget="gallery" class=" am-avg-sm-1 am-avg-md-4 am-avg-lg-4 am-gallery-bordered customer-case-content">
+      <li v-cloak v-for="(products,index) in msg" class="case-li am-u-sm-6 am-u-md-6 am-u-lg-3">
+        <div class="am-gallery-item case-img1">
+            <a href="#" >
+              <img :src="'upload/'+products.src"/> 
+            </a>
+        </div>
+        <div class="case-li-mengban">
+        	<div class=" case-word">
+              <h3 class="am-gallery-title">{{products.title}}</h3>
+              <p>{{products.post_time}}</p>
+              <a><span><i class="am-icon-eye"></i>查看更多</span></a>
+           </div>
+        </div>
+      
+      </li>   
+    </ul>
+  </div>
+		<div class="lan-bott">
+			<div class="left"><span>全方位解决方案,为您轻松解决不同问题</span>
+				<p>A full range of solutions for you to solve different problems</p>
+			</div>
+			<div class="right">
+				<a href="customer-case.html">
+					<span class="see-more">查看更多<i class="am-icon-angle-double-right"></i></span>
+				</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="part-title">
+		    	
+		</div>
+		</div>
+</div>	
+	
+<div class=" news-all">
+	<div class="am-container-1">
+<div class="news part-all">
+		<div class="part-title">
+			<a href="news.html">
+			<i class="am-icon-newspaper-o part-title-i"></i>
+			<span class="part-title-span">热门新闻</span>
+			<p>Hengwang News</p>
+			</a>
+		</div>
+  <!--   新闻动态页动态数据 -->
+		<div class="news-content " id="hotNews">
+				<ul class="news-content-ul">
+					<li v-cloak v-for="(news,index) in msg" class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+						<a href="#">
+						    <div class=" am-u-sm-12 am-u-md-12 am-u-lg-5">
+						    	<div class="news-img">
+						    	 <img :src="'upload/'+news.src"/>
+						    	</div>
+						    </div>
+						    <div  class=" am-u-sm-12 am-u-md-12 am-u-lg-7">
+										<span class="news-right-title">{{news.title}}</span>
+										<p class="news-right-time">{{news.post_time}}</p>
+										<p class="news-right-words">{{news.summary}}</p>
+										<a href="news.html"><span class="see-more2">查看更多<i class="am-icon-angle-double-right"></i></span></a>
+								 </div>	
+						<div class="clear"></div>
+						</a>
+					</li>
+					<div class="clear"></div>
+				</ul>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- 服务客户 -->
+<div class="part-all gray-li">
+<div class="customer  am-container">
+		<div class="part-title">
+			<i class="am-icon-users part-title-i"></i>
+			<span class="part-title-span">服务客户</span>
+			<p>Serve Customers</p>
+		</div>
+		<div style="padding-top: 20px;" class="am-container" id="patners">
+    <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails">
+      <li v-cloak v-for="(item,index) in msg"><img class="am-thumbnail" :src="'upload/'+item.src"/></li>
+    </ul>
+    </div>
+</div>
+</div>
+<!-- 底部版权 -->
+<footer class="footer ">
+<ul>     
+ <div id="contact">
+        <li v-cloak v-for="(contact,index) in msg" class="am-u-lg-4 am-u-md-4 am-u-sm-12 part-5-li2" >
+            <div class="part-5-title">公司名称：{{contact.company_name}}</div>
+            <div class="part-5-words2">
+                <span>地址:{{contact.address}}</span>
+                <span>电话:{{contact.tel}}</span>
+                <span>QQ号:{{contact.qq}}</span>
+                <span>邮箱:{{contact.email}}</span>
+                <span><i class="am-icon-phone"></i><em >{{contact.tel}}</em></span>
+            </div>
+        </li>
+  </div> 
+        <li class="am-u-lg-4 am-u-md-4 am-u-sm-12 ">
+            <div class="part-5-title">相关链接</div>
+            <div class="part-5-words2" id="footer">
+                <ul class="part-5-words2-ul">
+                    <li v-for="(item,index) in msg" class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a v-bind:href="item.href"> {{item.name}} </a></li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </li>
+        <div class="clear"></div>
+    </ul> 
+</footer>
+</body>
+<script src="js/amazeui.min.js"></script>
+<script src="js/scroll.js"></script>
+</html>

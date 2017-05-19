@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/files/admin/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/files/admin/css/houtai.css"/>
+  <style media="screen">
+  /*修改弹窗样式*/
+  a,a:hover{ text-decoration:none; color:#333}
+  .shadow {position:fixed; width:100%; height:100%; background:#000; opacity:0.3; filter:alpha(opacity:30);left:0; top: 0;}
+  .modal-dialog{position:fixed; left:40%; top:0;z-index: 999;}
+ 
+  </style>
+  <title>导航</title>
+  </head>
+  <body>
+    <% include components/top.inc.ejs %>
+    <!-- 主体展示页 -->
+      <div class="container">
+        <table class="table table-striped">
+          <caption style="color:#b8a05c"><h3>前台注册用户</h3></caption>
+          <thead>
+            <tr>
+              <th>用户ID</th>
+              <th>用户名</th>
+              <th>用户密码</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0;i<navs.length;i++){ %>
+            <tr>
+              <td><%=navs[i].id%></td>
+              <td><%=navs[i].username%></td> 
+              <td><%=navs[i].password%></td>
+              <td>
+                <button class="btn btn-sm btn-danger"><a href="?act=del&id=<%=navs[i].id%>" onclick="return confirm('你真的要删吗？')">删除</a></button>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    <% include components/bottom.ejs %>
+  </body>
+  <script src="/files/admin/js/jquery.min.js"></script>
+  <script src="/files/admin/js/bootstrap.min.js"></script>
+  </html>
