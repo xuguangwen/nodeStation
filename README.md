@@ -26,18 +26,18 @@
 
 #### 后台管理登录页 采用md5加密，主要功能代码为：<br>
 const crypto=require('crypto');<br>
-module.exports={<br>
-  MD5_SUFFIX: 'FDSW$t34tregt5tO&$(#RHuyoyiUYE*&OI$HRLuy87odlfh是个风格热腾腾)',<br>  
-  md5: function (str){<br>
+module.exports={
+  MD5_SUFFIX: 'FDSW$t34tregt5tO&$(#RHuyoyiUYE*&OI$HRLuy87odlfh是个风格热腾腾)',
+  md5: function (str){
     var obj=crypto.createHash('md5');<br>
     obj.update(str);<br> 
     return obj.digest('hex');<br>  
-  }<br> 
+  } 
 };<br>
 之后再验证登录：
-const express=require('express');<br><br><br><br>
-const common=require('../../libs/common');<br><br><br>
-const mysql=require('mysql');<br><br>
+const express=require('express');<br>
+const common=require('../../libs/common');<br>
+const mysql=require('mysql');<br>
 var db=mysql.createPool({host: 'localhost', user: 'root', password: 'root', database: 'web'});<br>
 module.exports=function (){<br>
   var router=express.Router();<br>
@@ -127,7 +127,7 @@ module.exports=function (){<br>
 
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/aboutus.png)
 
-### [详情请下载说明文档](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.doc）
+### [详情请下载说明文档](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.doc "详细设计文档")
 
 # 如有问题欢迎咨询本人QQ：326531916  微信：xu326531916 电话：18688793260
 
