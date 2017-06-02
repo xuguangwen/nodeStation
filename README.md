@@ -77,17 +77,19 @@ module.exports=function (){<br>
 
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/02.png)
 
-部分内容管理截图：<br>
+#### 部分内容管理截图
+
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/concent.png)
 
-#### 公司案例产品管理页:<br>
-![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/03.png)<br>
+#### 公司案例产品管理页:
 
-添加功能：![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/add.png)<br>
+![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/03.png)
 
-修改功能：![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/med.png)<br>
+添加功能：![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/add.png)
 
-删除功能：![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/del.png)<br>
+修改功能：![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/med.png)
+
+删除功能：![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/del.png)
 
 #### 合作伙伴管理
 
@@ -127,7 +129,7 @@ module.exports=function (){<br>
 
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/aboutus.png)
 
-[详情请下载说明文档](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.doc）
+[详情请下载说明文档](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.doc "悬停显示"）
 
 如有问题欢迎咨询本人QQ：326531916  微信：xu326531916 电话：18688793260
 
