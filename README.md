@@ -16,9 +16,54 @@ this is bootstrap+vue+node+express+mysql porject
 
 本系统需要安装通过install express cookie cookie-session body-parser  mysql express-static express-route multer consolidate ejs -D来安装模块依赖。
 
-后台管理登录页 采用md5加密
+后台管理登录页 采用md5加密，主要功能代码为：
+const crypto=require('crypto');
+module.exports={
+  MD5_SUFFIX: 'FDSW$t34tregt5tO&$(#RHuyoyiUYE*&OI$HRLuy87odlfh是个风格热腾腾)',
+  md5: function (str){
+    var obj=crypto.createHash('md5');
+    obj.update(str);
+    return obj.digest('hex');
+  }
+};
 
-![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/01.png)
+之后再验证登录：
+const express=require('express');
+const common=require('../../libs/common');
+const mysql=require('mysql');
+var db=mysql.createPool({host: 'localhost', user: 'root', password: 'root', database: 'web'});
+module.exports=function (){
+  var router=express.Router();
+  router.get('/', (req, res)=>{
+    res.render('admin/login.ejs', {});
+  });
+  router.post('/', (req, res)=>{
+    var username=req.body.username;
+    var password=common.md5(req.body.password+common.MD5_SUFFIX);
+    db.query(`SELECT * FROM admin_table WHERE username='${username}'`, (err, data)=>{
+      if(err){
+        console.error(err);
+        res.status(500).send('database error').end();
+      }else{
+        if(data.length==0){
+          res.status(400).send('no this admin').end();
+        }else{
+          if(data[0].password==password){
+            //成功
+            req.session['admin_id']=data[0].ID;
+            res.redirect('/admin/');
+          }else{
+            res.status(400).send('this password is incorrect').end();
+          }
+        }
+      }
+    });
+  });
+  return router;
+};
+
+后台登录页面效果图如下：
+![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/login01.png)
 
 后台管理首页
 
