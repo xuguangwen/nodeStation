@@ -31,7 +31,7 @@ module.exports={
   md5: function (str){
     var obj=crypto.createHash('md5');<br>
     obj.update(str);<br> 
-    return obj.digest('hex');<br>  
+    return obj.digest('hex');
   } 
 };<br>
 之后再验证登录：
@@ -129,6 +129,6 @@ module.exports=function (){<br>
 
 ### [详情请下载说明文档](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.doc "详细设计文档")
 
-# 如有问题欢迎咨询本人QQ：326531916  微信：xu326531916 电话：18688793260
+### 如有问题欢迎咨询本人QQ：326531916  微信：xu326531916 电话：18688793260
 
 
