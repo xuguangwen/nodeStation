@@ -67,11 +67,13 @@ module.exports=function (){<br>
     });<br>
   });<br>
   return router;<br>
-};<br>
+};
+
 后台登录页面效果图如下：
+
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/login01.png)
 
-#### 后台管理首页
+### 后台管理首页
 
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/02.png)
 
@@ -80,8 +82,11 @@ module.exports=function (){<br>
 
 #### 公司案例产品管理页:<br>
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/03.png)<br>
+
 添加功能：![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/add.png)<br>
+
 修改功能：![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/med.png)<br>
+
 删除功能：![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/del.png)<br>
 
 #### 合作伙伴管理
@@ -97,21 +102,32 @@ module.exports=function (){<br>
 
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/06.png)
 
-#### 前台页面
+### 前台页面
+
+#### 前台注册登陆页与企业主页
 
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/login.png)
-
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/index.png)
+
+#### 新闻与新闻详情
 
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/news.png)
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/news2.png)
 
-![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/nxinxi.png)
-![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/nxinxi1.png)
+#### 企业案例与产品
+
+![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/xinxi.png)
+![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/xinxi1.png)
+
+#### 企业服务
 
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/fuwu.png)
 
-详情请下载https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.doc  说明文档。
+#### 企业文化与关于我们
+
+![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/aboutus.png)
+
+[详情请下载说明文档](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.doc）
 
 如有问题欢迎咨询本人QQ：326531916  微信：xu326531916 电话：18688793260
 
