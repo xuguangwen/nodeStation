@@ -1,6 +1,21 @@
 # vue-node-mysql
 this is bootstrap+vue+node+express+mysql porject
-需要安装模块install express cookie cookie-session body-parser session mysql express-static express-route multer consolidate ejs -D
+该系统为建设一个高可扩展的H5企业网站，主要功能模块图如下：
+
+![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/mvc.png)
+
+该系统分为前台用户子系统和后台企业管理子系统，具体系统用例图如下：
+
+![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/usecase01.png)
+
+![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/usecase.png)
+
+根据功能性需求，使用starUML建立数据库E-R图如下：
+
+![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/dataer.png)
+
+本系统需要安装通过install express cookie cookie-session body-parser  mysql express-static express-route multer consolidate ejs -D来安装模块依赖。
+
 后台管理登录页 采用md5加密
 
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/01.png)
