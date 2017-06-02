@@ -26,9 +26,7 @@ this is bootstrap+vue+node+express+mysql porject
 
 ![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/06.png)
 
-前台数据
 
-![image](https://github.com/k2-xu/vue-express-ejs-node-mysql/blob/master/readme/qiantai.png)
 
 代码结构
 
